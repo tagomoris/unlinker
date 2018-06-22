@@ -62,6 +62,16 @@ This rule determines deleted files using filesystem level last-modified time (mt
 }
 ```
 
+## How To
+
+Test: `go test -v`
+
+Build: `go build`
+
+Release: (set `GITHUB_TOKEN` to release binaries)
+ - `gox -os="linux darwin" -arch="386 amd64" -output "build/{{.Dir}}_{{.OS}}_{{.Arch}}"`
+ - `ghr $VERSION build/`
+
 ## Versions
 
 - v0.1.0: First version
