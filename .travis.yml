@@ -1,0 +1,8 @@
+language: go
+sudo: false
+go:
+  - 1.10.x
+install:
+  - echo "skipping travis default"
+script:
+  - go test -v -race
