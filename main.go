@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -10,6 +11,8 @@ import (
 	"strings"
 	"time"
 )
+
+const Version = "v0.1.0"
 
 type config struct {
 	Rule string `json:"rule"`
@@ -197,5 +200,9 @@ func run(confDir string, now time.Time) {
 
 func main() {
 	confDir := os.Args[1]
+	if confDir == "--version" {
+		fmt.Printf("unlinker %s\n", Version)
+		return
+	}
 	run(confDir, time.Now())
 }
