@@ -1,4 +1,4 @@
-# unlinker
+# unlinker [![Build Status](https://travis-ci.org/tagomoris/unlinker.svg?branch=initial-version)](https://travis-ci.org/tagomoris/unlinker)
 
 Single binary tool to delete old (expired) files, especially for log files.
 
