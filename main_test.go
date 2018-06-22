@@ -86,10 +86,10 @@ func TestFindTargetsWithTimestamp(t *testing.T) {
 
  	jst := time.FixedZone("Japanese Standard Time", int((9 * time.Hour).Seconds()))
 
-	paths = []string{"/a/b/c.2018061723_JST.log.gz", "/a/b/c.2018061800_JST.log.gz", "/a/b/c.2018061801_JST.log.gz", "/a/b/c.2018061802_JST.log.gz", "/a/b/c.2018061803_JST.log.gz", "/a/b/c.2018061804_JST.log.gz", "/a/b/c.2018061805_JST.log.gz", "/a/b/c.2018061810_JST.log.gz"}
-	expected = []string{"/a/b/c.2018061723_JST.log.gz", "/a/b/c.2018061800_JST.log.gz"}
-	now = time.Date(2018, 6, 18, 12, 0, 0, 0, jst) // 2018-06-18 12:00:00.0 
-	assertEqualStrings(t, expected, findTargetsWithTimestamp(now, "/a/b/c.*.log.gz", paths, "%Y%m%d%H_%Z", 86400 / 2), "")
+	paths = []string{"/a/b/c.2018061723_+0900.log.gz", "/a/b/c.2018061800_+0900.log.gz", "/a/b/c.2018061801_+0900.log.gz", "/a/b/c.2018061802_+0900.log.gz", "/a/b/c.2018061803_+0900.log.gz", "/a/b/c.2018061804_+0900.log.gz", "/a/b/c.2018061805_+0900.log.gz", "/a/b/c.2018061810_+0900.log.gz"}
+	expected = []string{"/a/b/c.2018061723_+0900.log.gz", "/a/b/c.2018061800_+0900.log.gz"}
+	now = time.Date(2018, 6, 18, 12, 0, 0, 0, jst) // 2018-06-18 12:00:00.0
+	assertEqualStrings(t, expected, findTargetsWithTimestamp(now, "/a/b/c.*.log.gz", paths, "%Y%m%d%H_%z", 86400 / 2), "")
 }
 
 func prepareTempDir() string {
