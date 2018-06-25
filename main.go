@@ -93,7 +93,7 @@ Golang time format template: Mon Jan 2 15:04:05 -0700 MST 2006
 	if strings.Index(format, "%z") > 0 || strings.Index(format, "%Z") > 0 {
 		containsTimezone = true
 	}
-	result := strings.Repeat(format, 1)
+	result := format
 	for _, pair := range timeFormatMapping {
 		result = strings.Replace(result, pair[0], pair[1], -1)
 	}
