@@ -155,10 +155,11 @@ func findTargetsWithMtime(now time.Time, paths []string, expireSec int) []string
 }
 
 func findTargets(c config, now time.Time) []string {
-	if strings.Index(c.PathPattern, "*") == -1 {
+	var globNum = strings.Count(c.PathPattern, "*")
+	if globNum == 0 {
 		log.Fatal("Path in configuration must have a glob(*), but not:" + c.PathPattern)
 	}
-	if strings.Index(c.PathPattern, "*") != strings.LastIndex(c.PathPattern, "*") {
+	if globNum > 1 {
 		log.Fatal("Path in configuration must have just one glob(*), but more:" + c.PathPattern)
 	}
 
