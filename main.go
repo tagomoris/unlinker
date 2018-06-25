@@ -118,9 +118,9 @@ func findTargetsWithTimestamp(now time.Time, pathPattern string, paths []string,
 
 	expired := now.Add(time.Duration(expireSec) * time.Second * -1)
 	targets := make([]string, 0)
-	var t time.Time
-	var err error
 	for _, p := range paths {
+		var t time.Time
+		var err error
 		part := globMatchPart(p, pathPattern)
 		if containsTimezone {
 			t, err = time.Parse(format, part)
@@ -143,12 +143,9 @@ func findTargetsWithTimestamp(now time.Time, pathPattern string, paths []string,
 func findTargetsWithMtime(now time.Time, paths []string, expireSec int) []string {
 	expired := now.Add(time.Duration(expireSec) * time.Second * -1)
 	targets := make([]string, 0)
-	var finfo os.FileInfo
-	var t time.Time
-	var err error
 	for _, p := range paths {
-		if finfo, err = os.Stat(p); err == nil {
-			t = finfo.ModTime()
+		if finfo, err := os.Stat(p); err == nil {
+			t := finfo.ModTime()
 			if t.Before(expired) || t.Equal(expired) {
 				targets = append(targets, p)
 			}
