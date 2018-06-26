@@ -1,0 +1,6 @@
+{
+    "rule": "timestamp",
+    "path": "/my/path/access_log.*.log.gz",
+    "format": "%Y%m%d_%H",
+    "expire_sec": 86400
+}

@@ -1,0 +1,5 @@
+{
+    "rule": "mtime",
+    "path": "/my/path/access.log.*.gz",
+    "expire_sec": 86400
+}

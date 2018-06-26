@@ -1,0 +1,5 @@
+{
+    "rule": "age",
+    "path": "/Users/tagomoris/gh/unlinker/logs/age/accesslog.*",
+    "age": 4
+}
