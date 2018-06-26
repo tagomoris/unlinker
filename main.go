@@ -15,11 +15,11 @@ import (
 const Version = "v0.1.1"
 
 type config struct {
-	Rule string `json:"rule"`
+	Rule        string `json:"rule"`
 	PathPattern string `json:"path"`
-	Age int `json:"age"`
-	Format string `json:"format"`
-	ExpireSec int `json:"expire_sec"`
+	Age         int    `json:"age"`
+	Format      string `json:"format"`
+	ExpireSec   int    `json:"expire_sec"`
 }
 
 func readConfigList(confDir string) []config {
@@ -74,21 +74,21 @@ func convertTimestampFormat(format string) (string, bool) {
 		{"%%", "%"},
 	}
 	/*
-Supported specifiers:
-%d  Day of the month as a zero-padded decimal number.
-%b  Month as locale’s abbreviated name.
-%m  Month as a zero-padded decimal number.
-%y  Year without century as a zero-padded decimal number.
-%Y  Year with century as a decimal number.
-%H  Hour (24-hour clock) as a zero-padded decimal number.
-%M  Minute as a zero-padded decimal number.
-%S  Second as a zero-padded decimal number.
-%z  UTC offset in the form +HHMM or -HHMM.
-%Z  Time zone name. UTC, EST, CST
-%%  A literal '%' character.
+	Supported specifiers:
+	%d  Day of the month as a zero-padded decimal number.
+	%b  Month as locale’s abbreviated name.
+	%m  Month as a zero-padded decimal number.
+	%y  Year without century as a zero-padded decimal number.
+	%Y  Year with century as a decimal number.
+	%H  Hour (24-hour clock) as a zero-padded decimal number.
+	%M  Minute as a zero-padded decimal number.
+	%S  Second as a zero-padded decimal number.
+	%z  UTC offset in the form +HHMM or -HHMM.
+	%Z  Time zone name. UTC, EST, CST
+	%%  A literal '%' character.
 
-Golang time format template: Mon Jan 2 15:04:05 -0700 MST 2006
-    */
+	Golang time format template: Mon Jan 2 15:04:05 -0700 MST 2006
+	*/
 	containsTimezone := false
 	if strings.Index(format, "%z") > 0 || strings.Index(format, "%Z") > 0 {
 		containsTimezone = true
@@ -163,7 +163,7 @@ func findTargets(c config, now time.Time) []string {
 		log.Fatal("Path in configuration must have just one glob(*), but more:" + c.PathPattern)
 	}
 
-	paths, err := filepath.Glob(c.PathPattern);
+	paths, err := filepath.Glob(c.PathPattern)
 	if err != nil {
 		log.Fatal(err)
 	}
