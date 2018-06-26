@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-const Version = "v0.1.0"
+const Version = "v0.1.1"
 
 type config struct {
 	Rule string `json:"rule"`

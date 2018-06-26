@@ -74,6 +74,7 @@ Release: (set `GITHUB_TOKEN` to release binaries)
 
 ## Versions
 
+- v0.1.1: Cleanup code/test
 - v0.1.0: First version
 
 ## License
