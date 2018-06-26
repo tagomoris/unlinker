@@ -113,6 +113,7 @@ func prepareTestFile(dir, basename string, mtime time.Time) string {
 
 func TestFindTargetsWithMtime(t *testing.T) {
 	tmpdir := prepareTempDir()
+	defer os.RemoveAll(tmpdir)
 	names := []string{"c.20180617_23", "c.20180618_00", "c.20180618_01", "c.20180618_02", "c.20180618_03", "c.20180618_04", "c.20180618_05", "c.20180618_10"}
 	paths := []string{
 		prepareTestFile(tmpdir, names[0], time.Date(2018, 6, 18, 0, 0, 3, 0, time.Local)),
@@ -140,6 +141,7 @@ func TestFindTargetsWithMtime(t *testing.T) {
 
 func TestRun(t *testing.T) {
 	tmpdir := prepareTempDir()
+	defer os.RemoveAll(tmpdir)
 	confDir, err := ioutil.TempDir(tmpdir, "conf")
 	if err != nil {
 		panic("failed to create confDir")
